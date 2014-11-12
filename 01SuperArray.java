@@ -89,26 +89,19 @@ public class SuperArray{
     public static Object remove(int index){
 	int length = superArray.length;
 	Object[] temp;
+	int size = size(superArray);
 	if (index < length || index > 0){
 	    temp = new Object[length-1];
-	    if (index == 0){
-		for (int i = 0; i < length - 1; i ++){
-		    temp[i] = superArray[i+1];		    
-		}
-		superArray = new Object[length - 1];
-		for (int j = 0; j < length - 1;j ++){
-		    superArray[j] = temp[j];		    
-		}
-	    }else if(index == length - 1){
-		for (int i = 0; i < length - 1; i ++){
-		    temp[i] = superArray[i];		    
-		}
-		superArray = new Object[length - 1];
-		for (int j = 0; j < length - 1;j ++){
-		    superArray[j] = temp[j];		    
-		}
-	    }else{
-		superArray[index] = null;
+	    for (int i = 0; i < length - 1; i ++){
+		if (i == index){
+		    temp[i] = null;
+		}else{
+		    temp[i] = superArray[i];
+		}		    
+	    }
+	    superArray = new Object[length - 1];
+	    for (int j = 0; j < length - 1;j ++){
+		superArray[j] = temp[j];		    
 	    }
 	}else{
 	    System.out.println("ERROR");
