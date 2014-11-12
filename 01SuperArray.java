@@ -26,7 +26,7 @@ public class SuperArray{
 	for (int i = 0; i < length; i ++){
 	    temp[i] = superArray[i];
 	}
-	superArray = new Object[length + 1];
+	superArray = new Object[length + length];
 	for (int j = 0; j < length; j ++){
 	    superArray[j] = temp[j];
 	}
@@ -69,7 +69,7 @@ public class SuperArray{
 	    for (int i = 0; i < length; i ++){
 		temp[i] = superArray[i];
 	    }
-	    superArray = new Object[length + 1];
+	    superArray = new Object[length + length];
 	    for (int j = 0; j < index; j ++){
 		superArray[j] = temp[j];
 	    }
