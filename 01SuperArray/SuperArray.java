@@ -78,7 +78,7 @@ public class SuperArray{
 		superArray[k] = temp[k-1];
 	    }
 	}else{
-	    System.out.println("ERROR");
+	    throw new ArithmeticException();
 	}
     }
     public static Object set(int index, Object o){
@@ -110,21 +110,25 @@ public class SuperArray{
 	return superArray;
     }
     public static void main (String[]args){
-	SuperArray a = new SuperArray(5);
-	System.out.println(toString(a.superArray));
-	add(5);
-	System.out.println(toString(a.superArray));
-	resize(10);
-	System.out.println(toString(a.superArray));
-	System.out.println(get(3));
-	add(3, 4);
-	System.out.println(set(3, 10));
-	System.out.println(toString(a.superArray));
-	System.out.println();
-	SuperArray b = new SuperArray();
-	System.out.println(size(b.superArray));
-	remove(0);
-	System.out.println(toString(b.superArray));
+	try{
+	    SuperArray a = new SuperArray(5);
+	    System.out.println(toString(a.superArray));
+	    add(5);
+	    System.out.println(toString(a.superArray));
+	    resize(10);
+	    System.out.println(toString(a.superArray));
+	    System.out.println(get(3));
+	    add(3, 4);
+	    System.out.println(set(3, 10));
+	    System.out.println(toString(a.superArray));
+	    System.out.println();
+	    SuperArray b = new SuperArray();
+	    System.out.println(size(b.superArray));
+	    remove(0);
+	    System.out.println(toString(b.superArray));
+	}catch(ArithmeticException e){
+	    System.out.println("Oops, sorry!");
+	}
     }
     
 }                                 
