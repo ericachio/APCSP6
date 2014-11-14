@@ -16,12 +16,15 @@ public class ArrayListMethods{
 	int index;
 	Random rand = new Random();
 	int seed = 123456789;
-	ArrayList<Integer> H = new ArrayList<Integer>(L.size());
-	for (int i = 0; i < L.size(); i++){
-	    index = rand.nextInt(L.size() - i + 1);
-	    if (index != i){
-		H.add(index, L.get(i));
-	    }
+	int size = L.size();
+	ArrayList<Integer> H = new ArrayList<Integer>(size);
+	for (int i = 0; i < size; i ++){
+	    index = rand.nextInt(L.size());
+	    H.add(i, L.get(index));
+	    L.remove(index);
+	}
+	for(int j = 0; j < size; j ++){
+	    L.add(j, H.get(j));
 	}
     }
     public static void main (String[]args){
@@ -38,7 +41,25 @@ public class ArrayListMethods{
 	H.add(4);
 	H.add(3);
 	System.out.println(H);
-	collapseDuplicates yo = new collapseDuplicates(H);
+	ArrayListMethods yo = new ArrayListMethods();
+	yo.collapseDuplicates(H);
+	System.out.println(H);
+	*/
+	
+	/*
+	ArrayList<Integer> H = new ArrayList<Integer>();
+	H.add(1);
+	H.add(2);
+	H.add(3);
+	H.add(4);
+	H.add(5);
+	H.add(6);
+	H.add(7);
+	H.add(8);
+	H.add(9);
+	System.out.println(H);
+	ArrayListMethods ha = new ArrayListMethods();
+	ha.randomize(H);
 	System.out.println(H);
 	*/
 	
