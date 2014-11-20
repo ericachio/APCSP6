@@ -6,9 +6,16 @@ public class WordGrid{
 	data = new char[rows][cols];
 	for (int i = 0; i < data.length; i ++){
 	    for (int l = 0; l < data[i].length; l ++){
+		data[i][l] = ' ';
+	    }
+	}
+	/*
+	  for (int i = 0; i < data.length; i ++){
+	    for (int l = 0; l < data[i].length; l ++){
 		data[i][l] = randomChar();
 	    }
 	}
+	*/
     }
     public char randomChar(){
 	Random rand = new Random();
@@ -36,13 +43,30 @@ public class WordGrid{
 	}
 	return ans;
     }
-    //public boolean addWordHorizontal(String word, int row, int col){
-    //}
+    public boolean addWordHorizontal(String word, int row, int col){
+	int length = word.length();
+	char[][] temp = data;
+	int posscol = temp[row].length - col;
+	boolean woo = false;
+	if (posscol >= length){
+	    int l = 0;
+	    for (int i = col; i < length + col; i++){
+		if (data[row][i] == word.charAt(l) ||  data[row][i] == ' '){
+		    data[row][i] = word.charAt(l);
+		    l ++;
+		    woo = true;
+		}	
+	    }
+	}
+	return woo;
+    }
     
     public static void main (String[]args){
-	WordGrid a = new WordGrid(4,5);
-	System.out.println(a.toString()); 
-	System.out.println(a.randomChar()); 
-	System.out.println(a.randomChar()); 
+	WordGrid a = new WordGrid(10,10);
+	System.out.println(a.toString());
+	//a.clear();
+	a.addWordHorizontal("happy",5,3);
+	System.out.println(a.toString());
+
     }
 }
