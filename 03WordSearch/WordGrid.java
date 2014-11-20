@@ -61,11 +61,32 @@ public class WordGrid{
 	return woo;
     }
     
+    public boolean addWordVertical(String word, int row, int col){
+	int length = word.length();
+	char[][] temp = data;
+	int possrow = temp.length - row;
+	boolean woo = false;
+	if (possrow >= length){
+	    int l = 0;
+	    for (int i = row; i < length + row; i++){
+		if (data[i][col] == word.charAt(l) ||  data[i][col] == ' '){
+		    data[i][col] = word.charAt(l);
+		    l ++;
+		    woo = true;
+		}	
+	    }
+	}
+	return woo;
+    }
+    
+    
+    
     public static void main (String[]args){
 	WordGrid a = new WordGrid(10,10);
 	System.out.println(a.toString());
 	//a.clear();
 	a.addWordHorizontal("happy",5,3);
+	a.addWordVertical("car",1,3);
 	System.out.println(a.toString());
 
     }
