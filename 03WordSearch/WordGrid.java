@@ -43,73 +43,105 @@ public class WordGrid{
 	}
 	return ans;
     }
-    public boolean addWordHorizontal(String word, int row, int col){
+
+    public boolean checkSpace(String word, int row, int col, String way){
 	int length = word.length();
 	char[][] temp = data;
+	int possrow = temp.length - row;
 	int posscol = temp[row].length - col;
 	boolean woo = false;
-	if (posscol >= length){
+	if (way == "Horizontal"){
+	    if (posscol >= length){
+		int l = 0;
+		for (int i = col; i < length + col; i++){
+		    if (data[row][i] == word.charAt(l) ||  data[row][i] == ' '){
+			l ++;
+			woo = true;
+		    }else{
+			woo = false;
+		    }	
+		}
+	    }
+	}else if (way == "Vertical"){
+	    if (possrow >= length){
+		int l = 0;
+		for (int i = row; i < length + row; i++){
+		    if (data[i][col] == word.charAt(l) ||  data[i][col] == ' '){
+			l ++;
+			woo = true;
+		    }else{
+			woo = false;
+		    }		
+		}
+	    }
+	}else if (way == "Diagonal"){
+	    if (possrow >= length && posscol >= length){
+		int l = 0;
+		int r = row;
+		for (int i = col; i < length; i++){
+		    if (data[r][i] == word.charAt(l) ||  data[r][i] == ' '){
+			l ++;
+			r ++;
+		    woo = true;
+		    }else{
+			woo = false;
+		    }	
+		}
+	    }
+	}
+	return woo;
+    }
+    public boolean addWordHorizontal(String word, int row, int col){
+	boolean waa = false;
+	if (checkSpace(word, row, col, "Horizontal") == true){
 	    int l = 0;
-	    for (int i = col; i < length + col; i++){
+	    for (int i = col; i < word.length() + col; i++){
 		if (data[row][i] == word.charAt(l) ||  data[row][i] == ' '){
 		    data[row][i] = word.charAt(l);
 		    l ++;
-		    woo = true;
-		}else{
-		    woo = false;
+		    waa = true;
 		}	
 	    }
+	}else{
+	    System.out.println("Error...");
 	}
-	return woo;
+	return waa;
     }
     
     public boolean addWordVertical(String word, int row, int col){
-	int length = word.length();
-	char[][] temp = data;
-	int possrow = temp.length - row;
-	boolean woo = false;
-	if (possrow >= length){
+	boolean waa = false;
+	if (checkSpace(word, row, col, "Vertical") == true){
 	    int l = 0;
-	    for (int i = row; i < length + row; i++){
+	    for (int i = row; i < word.length() + row; i++){
 		if (data[i][col] == word.charAt(l) ||  data[i][col] == ' '){
 		    data[i][col] = word.charAt(l);
 		    l ++;
-		    woo = true;
-		}else{
-		    woo = false;
+		    waa = true;
 		}		
 	    }
+	}else{
+	    System.out.println("Doesn't Fit");
 	}
-	return woo;
+	return waa;
     }
     
     public boolean addWordDiagonal(String word, int row, int col){
-	int length = word.length();
-	char[][] temp = data;
-	int possrow = temp.length - row;
-	int posscol = temp[row].length - col;
-	int poss;
-	if (possrow >= posscol){
-	    poss = posscol;
-	}else{
-	    poss = possrow;
-	}
-	boolean woo = false;
-	if (possrow >= length && posscol >= length){
+	boolean waa = false;
+	if (checkSpace(word, row, col, "Diagonal") == true){
 	    int l = 0;
 	    int r = row;
-	    for (int i = col; i < length; i++){
+	    for (int i = col; i < word.length(); i++){
 		if (data[r][i] == word.charAt(l) ||  data[r][i] == ' '){
 		    data[r][i] = word.charAt(l);
 		    l ++;
 		    r ++;
-		    woo = true;
-		}else{
-		    woo = false;
+		    waa = true;
 		}	
 	    }
+	}else{
+	    System.out.println("Doesn't Fit");
 	}
-	return woo;
+	return waa;
     }
     
     public void addRand(){
@@ -130,7 +162,7 @@ public class WordGrid{
 	System.out.println(a.addWordHorizontal("happy",5,3));
 	System.out.println(a.addWordVertical("car",1,3));
 	System.out.println(a.addWordDiagonal("love",0,0));
-	a.addRand();
+	//a.addRand();
 	System.out.println(a.toString());
 
     }
