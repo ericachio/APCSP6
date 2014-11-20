@@ -45,15 +45,14 @@ public class WordGrid{
     }
 
     public boolean checkSpace(String word, int row, int col, String way){
-	int length = word.length();
 	char[][] temp = data;
 	int possrow = temp.length - row;
 	int posscol = temp[row].length - col;
 	boolean woo = false;
 	if (way == "Horizontal"){
-	    if (posscol >= length){
+	    if (posscol >= word.length()){
 		int l = 0;
-		for (int i = col; i < length + col; i++){
+		for (int i = col; i < word.length() + col; i++){
 		    if (data[row][i] == word.charAt(l) ||  data[row][i] == ' '){
 			l ++;
 			woo = true;
@@ -63,9 +62,9 @@ public class WordGrid{
 		}
 	    }
 	}else if (way == "Vertical"){
-	    if (possrow >= length){
+	    if (possrow >= word.length()){
 		int l = 0;
-		for (int i = row; i < length + row; i++){
+		for (int i = row; i < word.length() + row; i++){
 		    if (data[i][col] == word.charAt(l) ||  data[i][col] == ' '){
 			l ++;
 			woo = true;
@@ -75,14 +74,14 @@ public class WordGrid{
 		}
 	    }
 	}else if (way == "Diagonal"){
-	    if (possrow >= length && posscol >= length){
+	    if (possrow >= word.length() && posscol >= word.length()){
 		int l = 0;
 		int r = row;
-		for (int i = col; i < length; i++){
+		for (int i = col; i < word.length() + col; i++){
 		    if (data[r][i] == word.charAt(l) ||  data[r][i] == ' '){
 			l ++;
 			r ++;
-		    woo = true;
+			woo = true;
 		    }else{
 			woo = false;
 		    }	
@@ -130,7 +129,7 @@ public class WordGrid{
 	if (checkSpace(word, row, col, "Diagonal") == true){
 	    int l = 0;
 	    int r = row;
-	    for (int i = col; i < word.length(); i++){
+	    for (int i = col; i < word.length() + col; i++){
 		if (data[r][i] == word.charAt(l) ||  data[r][i] == ' '){
 		    data[r][i] = word.charAt(l);
 		    l ++;
@@ -159,9 +158,9 @@ public class WordGrid{
 	WordGrid a = new WordGrid(10,10);
 	System.out.println(a.toString());
 	//a.clear();
-	System.out.println(a.addWordHorizontal("happy",5,3));
-	System.out.println(a.addWordVertical("car",1,3));
-	System.out.println(a.addWordDiagonal("love",0,0));
+	//System.out.println(a.addWordHorizontal("happy",5,3));
+	//System.out.println(a.addWordVertical("car",1,3));
+	System.out.println(a.addWordDiagonal("love",0,4));
 	//a.addRand();
 	System.out.println(a.toString());
 
