@@ -91,12 +91,20 @@ public class WordGrid{
 		int l = 0;
 		int r = row;
 		for (int i = col; i < word.length() + col; i++){
-		    if (data[r][i] == word.charAt(l) ||  data[r][i] == ' '){
+		    if (data[r][i] == word.charAt(l)){
 			l ++;
 			r ++;
 			woo = true;
-		    }
-	
+		    }else if (data[r][i] == ' '){
+			l ++;
+			r ++;
+			woo = true;
+		    }else{
+			l ++;
+			r ++;
+			woo = false;
+			i = word.length() + col;
+		    }  
 		}
 	    }
 	}
@@ -138,15 +146,13 @@ public class WordGrid{
 	    int l = 0;
 	    int r = row;
 	    for (int i = col; i < word.length() + col; i++){
-		if (data[r][i] == word.charAt(l) ||  data[r][i] == ' '){
-		    data[r][i] = word.charAt(l);
-		    l ++;
-		    r ++;
-		    waa = true;
-		}	
-	    }
+		data[r][i] = word.charAt(l);
+		l ++;
+		r ++;
+		waa = true;
+	    }	
 	}else if (checkSpace(word, row, col, "Diagonal") == false) {
-	    System.out.println("Doesn't Fit");
+	    waa = false;
 	}
 	return waa;
     }
@@ -161,7 +167,7 @@ public class WordGrid{
 	    }
 	}
     }
-    public String getWord(int rows, int cols)throws FileNotFoundException{
+    public void getWord(int rows, int cols)throws FileNotFoundException{
 	String ans = "";
 	File file = new File("words.txt");
 	Scanner scan = new Scanner(file);
@@ -174,28 +180,23 @@ public class WordGrid{
 		trial ++;
 		Random rand = new Random();
 		int seed = 123456789;
-		int side = rand.nextInt(3) + 1;
+		int side = rand.nextInt(4) + 1;
 		int r = rand.nextInt(rows);
 		int c = rand.nextInt(cols);
 		if (side == 1){
 		    addWordHorizontal(line, r, c);
 		    waa = true;
-		    System.out.println(line);
 		}
 		else if (side == 2){
 		    addWordVertical(line, r, c);
 		    waa = true;
-		    System.out.println(line);
-		}/*else if (side == 3){
-			addWordDiagonal(line, r, c);
-			waa = true;
-			System.out.println(line + " " + checkSpace(line, r, c, "Diagonal"));
-			
-		}*/	       
+		}else if (side == 3){
+		    addWordDiagonal(line, r, c);
+		    waa = true;	
+		}	       
 	    }
 	    lineNumber ++;
 	}
-	return "hello";
     }
     
     public static void main (String[]args)throws FileNotFoundException{
@@ -206,7 +207,7 @@ public class WordGrid{
 	//System.out.println(a.addWordVertical("car",1,3));
 	//System.out.println(a.addWordDiagonal("love",0,4));
 	//a.addRand();
-	System.out.println(a.getWord(25,25));
+        a.getWord(25,25);
 	System.out.println(a.toString());
 	
     }
