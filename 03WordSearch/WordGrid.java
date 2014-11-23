@@ -64,7 +64,9 @@ public class WordGrid{
 			woo = true;
 		    }else{
 			woo = false;
-		    }		
+			l ++;
+			i = word.length() + col;
+		    }
 		}
 	    }
 	}else if (way == "Vertical"){
@@ -78,8 +80,10 @@ public class WordGrid{
 			l ++;
 			woo = true;
 		    }else{
+			l ++;
 			woo = false;
-		    }		
+			i = word.length() + row;
+		    }	
 		}
 	    }
 	}else if (way == "Diagonal"){
@@ -103,17 +107,12 @@ public class WordGrid{
 	if (checkSpace(word, row, col, "Horizontal") == true){
 	    int l = 0;
 	    for (int i = col; i < word.length() + col; i++){
-		if (data[row][i] == word.charAt(l) ||  data[row][i] == ' '){
-		    data[row][i] = word.charAt(l);
-		    l ++;
-		    waa = true;
-		}else{
-		    waa = false;
-		    l ++;
-		}	
-	    }
-	}else{
-	    System.out.println("Error...");
+		data[row][i] = word.charAt(l);
+		l ++;
+		waa = true;
+	    }	
+	}else if (checkSpace(word, row, col, "Horizontal") == false){
+	    waa = false;
 	}
 	return waa;
     }
@@ -123,17 +122,12 @@ public class WordGrid{
 	if (checkSpace(word, row, col, "Vertical") == true){
 	    int l = 0;
 	    for (int i = row; i < word.length() + row ; i++){
-		if (data[i][col] == word.charAt(l) ||  data[i][col] == ' '){
-		    data[i][col] = word.charAt(l);
-		    l ++;
-		    waa = true;
-		}else{
-		    waa = false;
-		    l ++;
-		}		
+		data[i][col] = word.charAt(l);
+		l ++;
+		waa = true;		
 	    }
-	}else{
-	    System.out.println("Doesn't Fit");
+	}else if (checkSpace(word, row, col, "Vertical") == false){
+	    waa = false;
 	}
 	return waa;
     }
@@ -151,7 +145,7 @@ public class WordGrid{
 		    waa = true;
 		}	
 	    }
-	}else{
+	}else if (checkSpace(word, row, col, "Diagonal") == false) {
 	    System.out.println("Doesn't Fit");
 	}
 	return waa;
@@ -184,26 +178,21 @@ public class WordGrid{
 		int r = rand.nextInt(rows);
 		int c = rand.nextInt(cols);
 		if (side == 1){
-		    if (checkSpace(line, r, c, "Horizontal") == true){
-			addWordHorizontal(line, r, c);
-			waa = true;
-			System.out.println(line + " " + checkSpace(line, r, c, "Horizontal"));
-		    }
-		}else if (side == 2){
-		    if (checkSpace(line, r, c, "Vertical") == true){
-			addWordVertical(line, r, c);
-			waa = true;
-			System.out.println(line + " " + checkSpace(line, r, c, "Vertical"));
-		    }
+		    addWordHorizontal(line, r, c);
+		    waa = true;
+		    System.out.println(line);
+		}
+		else if (side == 2){
+		    addWordVertical(line, r, c);
+		    waa = true;
+		    System.out.println(line);
 		}/*else if (side == 3){
-		    if (checkSpace(line, r, c, "Diagonal") == true){
 			addWordDiagonal(line, r, c);
 			waa = true;
 			System.out.println(line + " " + checkSpace(line, r, c, "Diagonal"));
-		    }
-		    }*/
-		
-	    } 
+			
+		}*/	       
+	    }
 	    lineNumber ++;
 	}
 	return "hello";
