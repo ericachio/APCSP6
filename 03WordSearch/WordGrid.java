@@ -200,14 +200,14 @@ public class WordGrid{
     }
     
     public static void main (String[]args)throws FileNotFoundException{
-	WordGrid a = new WordGrid(25,25);
+	WordGrid a = new WordGrid(50,50);
 	//System.out.println(a.toString());
 	//a.clear();
 	//System.out.println(a.addWordHorizontal("happy",5,3));
 	//System.out.println(a.addWordVertical("car",1,3));
 	//System.out.println(a.addWordDiagonal("love",0,4));
 	//a.addRand();
-        a.getWord(25,25);
+        a.getWord(50,50);
 	System.out.println(a.toString());
 	
     }
