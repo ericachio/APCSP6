@@ -1,17 +1,17 @@
 public class SuperArray{
     int elements;
-    public static String[] superArray;
+    public static Object[] superArray;
     
     public SuperArray(){
-	superArray = new String[10];
+	superArray = new Object[10];
     }
     public SuperArray(int size){
-	superArray = new String[size];
+	superArray = new Object[size];
 	//for (int i = 0; i < size; i++){
 	//    superArray[i] = i;
 	//}
     }
-    public static String toString(String[] array){
+    public static String toString(Object[] array){
 	String ans = "[ ";
 	int length = array.length;
 	for (int i = 0; i < length; i++){
@@ -20,20 +20,20 @@ public class SuperArray{
 	ans = ans + "]";
 	return ans;
     }
-    public static void add(String e){
+    public static void add(Object e){
 	int length = superArray.length;
-	String[] temp = new String[length];
+	Object[] temp = new Object[length];
 	for (int i = 0; i < length; i ++){
 	    temp[i] = superArray[i];
 	}
-	superArray = new String[length + length];
+	superArray = new Object[length + length];
 	for (int j = 0; j < length; j ++){
 	    superArray[j] = temp[j];
 	}
 	superArray[length] = e;
 	
     }
-    public static int size(String[] array){
+    public static int size(Object[] array){
 	int length = array.length;
 	int size = 0;
 	for (int i = 0; i < length; i ++){
@@ -45,16 +45,16 @@ public class SuperArray{
     }
     public static void resize(int newCapacity){
 	int length = superArray.length;
-	String[] temp = new String[length];
+	Object[] temp = new Object[length];
 	for (int i = 0; i < length; i ++){
 	    temp[i] = superArray[i];
 	}
-	superArray = new String[newCapacity];
+	superArray = new Object[newCapacity];
 	for (int j = 0; j < length; j ++){
 	    superArray[j] = temp[j];
 	}
     }
-    public static String get(int index){
+    public static Object get(int index){
 	int length = superArray.length;
 	if (index < length && index > 0){
 	    return superArray[index];
@@ -62,14 +62,14 @@ public class SuperArray{
 	    return null;
 	}
     }
-    public static void add(int index, String o){
+    public static void add(int index, Object o){
 	int length = superArray.length;
-	String[] temp = new String[length];
+	Object[] temp = new Object[length];
 	if (index < length && index > 0){
 	    for (int i = 0; i < length; i ++){
 		temp[i] = superArray[i];
 	    }
-	    superArray = new String[length + length];
+	    superArray = new Object[length + length];
 	    for (int j = 0; j < index; j ++){
 		superArray[j] = temp[j];
 	    }
@@ -81,17 +81,17 @@ public class SuperArray{
 	    throw new ArithmeticException();
 	}
     }
-    public static String set(int index, String o){
-	String ans = superArray[index];
+    public static Object set(int index, Object o){
+	Object ans = superArray[index];
 	superArray[index] = o;
 	return ans;
     }
     public static Object remove(int index){
 	int length = superArray.length;
-	String[] temp;
+	Object[] temp;
 	int size = size(superArray);
 	if (index < length || index > 0){
-	    temp = new String[length-1];
+	    temp = new Object[length-1];
 	    for (int i = 0; i < length - 1; i ++){
 		if (i == index){
 		    temp[i] = null;
@@ -99,7 +99,7 @@ public class SuperArray{
 		    temp[i] = superArray[i];
 		}		    
 	    }
-	    superArray = new String[length - 1];
+	    superArray = new Object[length - 1];
 	    for (int j = 0; j < length - 1;j ++){
 		superArray[j] = temp[j];		    
 	    }
@@ -113,13 +113,13 @@ public class SuperArray{
 	try{
 	    SuperArray a = new SuperArray(5);
 	    System.out.println(toString(a.superArray));
-	    add("5");
+	    add(5);
 	    System.out.println(toString(a.superArray));
 	    resize(10);
 	    System.out.println(toString(a.superArray));
 	    System.out.println(get(3));
-	    add(3, "4");
-	    System.out.println(set(3, "10"));
+	    add(3, 4);
+	    System.out.println(set(3, 10));
 	    System.out.println(toString(a.superArray));
 	    System.out.println();
 	    SuperArray b = new SuperArray();
