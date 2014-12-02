@@ -9,6 +9,17 @@ public class WordGrid{
     int rows;
     int cols; 
 
+    public WordGrid(){
+	int rows = 25;
+	int cols = 25;
+	data = new char[rows][cols];
+	for (int i = 0; i < data.length; i ++){
+	    for (int l = 0; l < data[i].length; l ++){
+		data[i][l] = ' ';
+	    }
+	}
+    }
+    
     public WordGrid(int rows, int cols){
 	data = new char[rows][cols];
 	for (int i = 0; i < data.length; i ++){
@@ -24,6 +35,7 @@ public class WordGrid{
 	}
 	*/
     }
+
     public char randomChar(){
 	char[] ch = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 	int index = rand.nextInt(26);
@@ -169,11 +181,13 @@ public class WordGrid{
 	    }
 	}
     }
-    public void getWord(int rows, int cols, String fileName)throws FileNotFoundException{
+    public void getWord (String fileName)throws FileNotFoundException{
 	String ans = "";
 	File file = new File(fileName);
 	Scanner scan = new Scanner(file);
 	int lineNumber = 1;
+	int rows = data[0].length;
+	int cols = data.length;
 	while (scan.hasNextLine()){
 	    String line = scan.nextLine();
 	    boolean waa = false;
@@ -200,10 +214,11 @@ public class WordGrid{
     }
 
     public void loadWordsFromFile(String fileName, boolean fillRandomLetters)throws FileNotFoundException{
-	String ans = "";
-	File file = new File(fileName);
-	Scanner scan = new Scanner(file);
-	
+	getWord(fileName);
+	if (fillRandomLetters == true){
+	    addRand();
+	}
+	System.out.println(toString());
     }
     
     public static void main (String[]args)throws FileNotFoundException{
@@ -214,8 +229,10 @@ public class WordGrid{
 	//System.out.println(a.addWordVertical("car",1,3));
 	//System.out.println(a.addWordDiagonal("love",0,4));
 	//a.addRand();
-        a.getWord(50,50, "words.txt");
-	System.out.println(a.toString());
+        //a.getWord("words.txt");
+	//System.out.println(a.toString());
+	a.loadWordsFromFile("words.txt", false);
+	a.loadWordsFromFile("words.txt", true);
 	
     }
 }
