@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][]data;
-    Random rand = new Random(6);
+    Random rand = new Random();
     int seed = 123456789;
     int rows;
-    int cols; 
+    int cols;
+    String words = "";
+    
 
     public WordGrid(){
 	int rows = 25;
@@ -15,7 +17,7 @@ public class WordGrid{
 	data = new char[rows][cols];
 	for (int i = 0; i < data.length; i ++){
 	    for (int l = 0; l < data[i].length; l ++){
-		data[i][l] = ' ';
+		data[i][l] = '_';
 	    }
 	}
     }
@@ -24,7 +26,7 @@ public class WordGrid{
 	data = new char[rows][cols];
 	for (int i = 0; i < data.length; i ++){
 	    for (int l = 0; l < data[i].length; l ++){
-		data[i][l] = ' ';
+		data[i][l] = '_';
 	    }
 	}
 	/*
@@ -45,7 +47,7 @@ public class WordGrid{
 	char[][] temp = data;
 	for (int i = 0; i < temp.length; i ++){
 	    for (int l = 0; l < temp[i].length; l ++){
-		data[i][l] = ' ';
+		data[i][l] = '_';
 	    }
 	}
     }
@@ -73,7 +75,7 @@ public class WordGrid{
 		    if (data[row][i] == word.charAt(l)){
 			l ++;
 			woo = true;
-		    }else if (data[row][i] == ' '){
+		    }else if (data[row][i] == '_'){
 			l ++;
 			woo = true;
 		    }else{
@@ -90,7 +92,7 @@ public class WordGrid{
 		    if (data[i][col] == word.charAt(l)){
 			l ++;
 			woo = true;
-		    }else if (data[i][col] == ' '){
+		    }else if (data[i][col] == '_'){
 			l ++;
 			woo = true;
 		    }else{
@@ -109,7 +111,7 @@ public class WordGrid{
 			l ++;
 			r ++;
 			woo = true;
-		    }else if (data[r][i] == ' '){
+		    }else if (data[r][i] == '_'){
 			l ++;
 			r ++;
 			woo = true;
@@ -133,6 +135,7 @@ public class WordGrid{
 		l ++;
 		waa = true;
 	    }	
+	    words += word + "    ";
 	}else if (checkSpace(word, row, col, "Horizontal") == false){
 	    waa = false;
 	}
@@ -146,8 +149,9 @@ public class WordGrid{
 	    for (int i = row; i < word.length() + row ; i++){
 		data[i][col] = word.charAt(l);
 		l ++;
-		waa = true;		
+		waa = true;	
 	    }
+	    words += word + "    ";
 	}else if (checkSpace(word, row, col, "Vertical") == false){
 	    waa = false;
 	}
@@ -165,6 +169,7 @@ public class WordGrid{
 		r ++;
 		waa = true;
 	    }	
+	    words += word + "    ";
 	}else if (checkSpace(word, row, col, "Diagonal") == false) {
 	    waa = false;
 	}
@@ -175,16 +180,15 @@ public class WordGrid{
 	char[][] temp = data;
 	for (int i = 0; i < temp.length; i ++){
 	    for (int l = 0; l < temp[i].length; l ++){
-		if (data[i][l] == ' '){
+		if (data[i][l] == '_'){
 		    data[i][l] = randomChar();
 		}
 	    }
 	}
     }
     public void getWord (String fileName)throws FileNotFoundException{
-	String ans = "";
 	File file = new File(fileName);
-	Scanner scan = new Scanner(file);
+	Scanner scan = new Scanner(file);	
 	int lineNumber = 1;
 	int rows = data[0].length;
 	int cols = data.length;
@@ -221,8 +225,12 @@ public class WordGrid{
 	System.out.println(toString());
     }
     
+    public String wordsInPuzzle(){
+	return words;
+    }
+
     public static void main (String[]args)throws FileNotFoundException{
-	WordGrid a = new WordGrid(50,50);
+	WordGrid a = new WordGrid(20,20);
 	//System.out.println(a.toString());
 	//a.clear();
 	//System.out.println(a.addWordHorizontal("happy",5,3));
@@ -232,7 +240,8 @@ public class WordGrid{
         //a.getWord("words.txt");
 	//System.out.println(a.toString());
 	a.loadWordsFromFile("words.txt", false);
-	a.loadWordsFromFile("words.txt", true);
+	//a.loadWordsFromFile("words.txt", true);
+       	System.out.println(a.wordsInPuzzle());
 	
     }
 }
