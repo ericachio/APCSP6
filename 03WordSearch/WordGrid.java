@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][]data;
+    Random rand = new Random(6);
+    int seed = 123456789;
+    int rows;
+    int cols; 
 
     public WordGrid(int rows, int cols){
 	data = new char[rows][cols];
@@ -21,8 +25,6 @@ public class WordGrid{
 	*/
     }
     public char randomChar(){
-	Random rand = new Random();
-	int seed = 123456789;
 	char[] ch = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 	int index = rand.nextInt(26);
 	return ch[index];
@@ -167,9 +169,9 @@ public class WordGrid{
 	    }
 	}
     }
-    public void getWord(int rows, int cols)throws FileNotFoundException{
+    public void getWord(int rows, int cols, String fileName)throws FileNotFoundException{
 	String ans = "";
-	File file = new File("words.txt");
+	File file = new File(fileName);
 	Scanner scan = new Scanner(file);
 	int lineNumber = 1;
 	while (scan.hasNextLine()){
@@ -178,8 +180,6 @@ public class WordGrid{
 	    int trial = 0;
 	    if (waa == false || trial < 5){
 		trial ++;
-		Random rand = new Random();
-		int seed = 123456789;
 		int side = rand.nextInt(4) + 1;
 		int r = rand.nextInt(rows);
 		int c = rand.nextInt(cols);
@@ -198,6 +198,13 @@ public class WordGrid{
 	    lineNumber ++;
 	}
     }
+
+    public void loadWordsFromFile(String fileName, boolean fillRandomLetters)throws FileNotFoundException{
+	String ans = "";
+	File file = new File(fileName);
+	Scanner scan = new Scanner(file);
+	
+    }
     
     public static void main (String[]args)throws FileNotFoundException{
 	WordGrid a = new WordGrid(50,50);
@@ -207,7 +214,7 @@ public class WordGrid{
 	//System.out.println(a.addWordVertical("car",1,3));
 	//System.out.println(a.addWordDiagonal("love",0,4));
 	//a.addRand();
-        a.getWord(50,50);
+        a.getWord(50,50, "words.txt");
 	System.out.println(a.toString());
 	
     }
