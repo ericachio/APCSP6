@@ -1,0 +1,16 @@
+public class Driver{
+    public static void main (String[] args){
+	if (arg.length > 0){
+	    int rows = args[0];
+	    int cols = args[1];
+	    WordGrid a = new WordGrid(rows, cols);
+	    int seed = args[2];
+	    a.setSeed(seed);
+	    if (args[3].equals("0")){
+		System.out.println(a.loadWordsFromFile("words.txt", false));
+	    }else if (args[3].equals("1")){
+		System.out.println(a.loadWordsFromFile("words.txt", true));
+	    }	    
+	}
+    }
+}

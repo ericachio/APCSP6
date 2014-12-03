@@ -5,12 +5,14 @@ import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][]data;
     Random rand = new Random();
-    int seed = 123456789;
     int rows;
     int cols;
     String words = "";
-    
 
+    public void setSeed(long seed){
+	rand.setSeed(seed);
+    }
+   
     public WordGrid(){
 	int rows = 25;
 	int cols = 25;
@@ -67,7 +69,7 @@ public class WordGrid{
 	char[][] temp = data;
 	int possrow = temp.length - row;
 	int posscol = temp[row].length - col;
-	boolean woo = false;
+	boolean woo = false; 
 	if (way == "Horizontal"){
 	    if (posscol >= word.length()){
 		int l = 0;
@@ -229,6 +231,7 @@ public class WordGrid{
 	return words;
     }
 
+    /*
     public static void main (String[]args)throws FileNotFoundException{
 	WordGrid a = new WordGrid(20,20);
 	//System.out.println(a.toString());
@@ -239,9 +242,11 @@ public class WordGrid{
 	//a.addRand();
         //a.getWord("words.txt");
 	//System.out.println(a.toString());
+	//a.setSeed(6);
 	a.loadWordsFromFile("words.txt", false);
 	//a.loadWordsFromFile("words.txt", true);
        	System.out.println(a.wordsInPuzzle());
 	
     }
+    */
 }
