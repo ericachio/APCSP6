@@ -31,13 +31,6 @@ public class WordGrid{
 		data[i][l] = '_';
 	    }
 	}
-	/*
-	  for (int i = 0; i < data.length; i ++){
-	    for (int l = 0; l < data[i].length; l ++){
-		data[i][l] = randomChar();
-	    }
-	}
-	*/
     }
 
     public char randomChar(){
