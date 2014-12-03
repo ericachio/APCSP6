@@ -8,8 +8,10 @@ public class Driver{
 	    int rows = Integer.parseInt(args[0]);
 	    int cols = Integer.parseInt(args[1]);
 	    WordGrid a = new WordGrid(rows, cols);
-	    int seed = Integer.parseInt(args[2]);
-	    a.setSeed(seed);
+	    if (args.length >= 4){
+		int seed = Integer.parseInt(args[2]);
+		a.setSeed(seed);
+	    }
 	    boolean ansKey = true;
 	    if (args.length >= 4){
 		if (args[3].equals("1")){
@@ -23,8 +25,9 @@ public class Driver{
 	    }catch(FileNotFoundException e){
 		System.out.println("File Not Found");
 	    }
-	    System.out.println(a.wordsInPuzzle());
+	    System.out.println("Find these words: \n" + a.wordsInPuzzle());
 	    System.out.println();
+	    System.out.println(a);
 	}
     }
 }

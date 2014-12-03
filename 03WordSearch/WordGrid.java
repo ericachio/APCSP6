@@ -137,7 +137,7 @@ public class WordGrid{
 		l ++;
 		waa = true;
 	    }	
-	    words += word + "    ";
+	    words += word + "  \t";
 	}else if (checkSpace(word, row, col, "Horizontal") == false){
 	    waa = false;
 	}
@@ -153,7 +153,7 @@ public class WordGrid{
 		l ++;
 		waa = true;	
 	    }
-	    words += word + "    ";
+	    words += word + "  \t";
 	}else if (checkSpace(word, row, col, "Vertical") == false){
 	    waa = false;
 	}
@@ -171,7 +171,7 @@ public class WordGrid{
 		r ++;
 		waa = true;
 	    }	
-	    words += word + "    ";
+	    words += word + "  \t";
 	}else if (checkSpace(word, row, col, "Diagonal") == false) {
 	    waa = false;
 	}
@@ -224,7 +224,6 @@ public class WordGrid{
 	if (fillRandomLetters == true){
 	    addRand();
 	}
-	System.out.println(toString());
     }
     
     public String wordsInPuzzle(){
