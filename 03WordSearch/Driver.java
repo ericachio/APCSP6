@@ -11,7 +11,7 @@ public class Driver{
 		System.out.println("Sorry, too big!");
 	    }else{
 		WordGrid a = new WordGrid(rows, cols);
-	    if (args.length >= 4){
+	    if (args.length >= 3){
 		int seed = Integer.parseInt(args[2]);
 		a.setSeed(seed);
 	    }

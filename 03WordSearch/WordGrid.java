@@ -61,7 +61,7 @@ public class WordGrid{
     public boolean checkSpace(String word, int row, int col, String way){
 	char[][] temp = data;
 	int possrow = temp.length - row;
-	int posscol = temp[row].length - col;
+	int posscol = temp[0].length - col;
 	boolean woo = false; 
 	if (way == "Horizontal"){
 	    if (posscol >= word.length()){
@@ -185,15 +185,15 @@ public class WordGrid{
 	File file = new File(fileName);
 	Scanner scan = new Scanner(file);	
 	int lineNumber = 1;
-	int rows = data[0].length;
-	int cols = data.length;
+	int cols = data[0].length;
+	int rows = data.length;
 	while (scan.hasNextLine()){
 	    String line = scan.nextLine();
 	    boolean waa = false;
 	    int trial = 0;
 	    if (waa == false || trial < 5){
 		trial ++;
-		int side = rand.nextInt(4) + 1;
+		int side = rand.nextInt(3) + 1;
 		int r = rand.nextInt(rows);
 		int c = rand.nextInt(cols);
 		if (side == 1){
@@ -220,12 +220,13 @@ public class WordGrid{
     }
     
     public String wordsInPuzzle(){
-	return words;
+	String header = "Find these words:\n";
+	return header + words;
     }
 
-    /*
+    
     public static void main (String[]args)throws FileNotFoundException{
-	WordGrid a = new WordGrid(20,20);
+	WordGrid a = new WordGrid(20,40);
 	//System.out.println(a.toString());
 	//a.clear();
 	//System.out.println(a.addWordHorizontal("happy",5,3));
@@ -234,11 +235,12 @@ public class WordGrid{
 	//a.addRand();
         //a.getWord("words.txt");
 	//System.out.println(a.toString());
-	//a.setSeed(6);
-	a.loadWordsFromFile("words.txt", false);
+	//a.setSeed(3);
+	//a.loadWordsFromFile("words.txt", false);
 	//a.loadWordsFromFile("words.txt", true);
-       	System.out.println(a.wordsInPuzzle());
+       	//System.out.println(a.wordsInPuzzle());
+	//System.out.println(a.toString());
 	
     }
-    */
+    
 }
