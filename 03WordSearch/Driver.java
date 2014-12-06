@@ -28,7 +28,7 @@ public class Driver{
 	    }catch(FileNotFoundException e){
 		System.out.println("File Not Found");
 	    }
-	    System.out.println("Find these words: \n" + a.wordsInPuzzle());
+	    System.out.println(a.wordsInPuzzle());
 	    System.out.println();
 	    System.out.println(a);
 	    }
