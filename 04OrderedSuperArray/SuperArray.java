@@ -116,11 +116,19 @@ public class SuperArray{
 	    a.add("5");
 	    System.out.println(a.toString(a.superArray));
 	    a.resize(10);
+<<<<<<< HEAD
 	    System.out.println(a.toString(a.superArray));
 	    System.out.println(a.get(3));
 	    a.add(3, "4");
 	    System.out.println(a.set(3, "10"));
 	    System.out.println(a.toString(a.superArray));
+=======
+	    System.out.println(toString(a.superArray));
+	    System.out.println(get(3));
+	    add(3, "4");
+	    System.out.println(set(3, "10"));
+	    System.out.println(toString(a.superArray));
+>>>>>>> 238e1a1e04f1b3ded9b8fff62e4e8ec265b0c1e3
 	    System.out.println();
 	    SuperArray b = new SuperArray();
 	    System.out.println(b.size(b.superArray));
