@@ -1,0 +1,8 @@
+import javax.swing.*;
+public class Converter extends JFrame{
+    public Converter(){
+	this.setTitle("Degree Converter");
+	this.setSize(600,400);
+	this.setLocation(100,100);
+    }
+}
