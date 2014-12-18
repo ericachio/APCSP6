@@ -1,6 +1,6 @@
 public class selection{
 
-    public selection(int[] c){
+    public static void selection(int[] c){
 	for (int i = 0; i < c.length - 1; i++){
 	    int lowest = i;
 	    for (int j = i + 1; j < c.length; j++){
@@ -22,6 +22,7 @@ public class selection{
 	trial[2] = 7;
 	trial[3] = 3;
 	trial[4] = 5;
-	selection a = new selection(trial);
+	selection a = new selection();
+	a.selection(trial);
     }
 }

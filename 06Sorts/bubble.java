@@ -1,6 +1,6 @@
 public class bubble{
 
-    public bubble(int[] c){
+    public static void bubble(int[] c){
 	boolean swap = true;
 	while(swap){
 	    swap = false;  
@@ -26,6 +26,7 @@ public class bubble{
 	trial[2] = 7;
 	trial[3] = 3;
 	trial[4] = 5;
-	bubble a = new bubble(trial);
+	bubble a = new bubble();
+	a.bubble(trial);
     }
 }
