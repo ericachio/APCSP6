@@ -11,7 +11,6 @@ public class bubble{
 		    c[i+1] = temp;
 		swap = true; 
 		}
-		System.out.println(c[i]);
 	    }
 	}
     }
