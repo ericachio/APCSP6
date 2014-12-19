@@ -41,4 +41,11 @@ public class sorts{
 	    }
 	}
     }
+
+    public static String name(){
+	return("Chio, Erica");
+    }
+    public static int period(){
+	return(6);
+    }
 }
