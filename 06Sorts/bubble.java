@@ -9,7 +9,7 @@ public class bubble{
 		    int temp = c[i];
 		    c[i] = c[i+1];
 		    c[i+1] = temp;
-		swap = true; 
+		    swap = true; 
 		}
 	    }
 	}

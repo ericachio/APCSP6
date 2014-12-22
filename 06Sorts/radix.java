@@ -6,7 +6,7 @@ public class radix{
 	ArrayList<Integer> bucket[] = new ArrayList[c.length];
 	for (int j = 0; j < c.length; j ++){
 	    bucket[j] = new ArrayList<>();
-	}
+	}2
 	for (int i = 0; i < c.length; i ++){
 	    int num = c[i];
 	    bucket[(num/place)%10].add(num);
